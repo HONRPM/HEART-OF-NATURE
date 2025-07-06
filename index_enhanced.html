@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heart of Nature Camp Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Rubik:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: #f0f9f0;
+      --bg-dark: #1b1b1b;
+      --text-light: #2e2e2e;
+      --text-dark: #e0e0e0;
+      --accent: #2e7d32;
+      --accent-dark: #66bb6a;
+    }
+    body {
+      font-family: 'Rubik', sans-serif;
+      margin: 0;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+    .dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    header {
+      background-color: var(--accent);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header img {
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+    }
+    .section {
+      padding: 20px;
+      text-align: center;
+    }
+    .highlight {
+      background-color: #c8e6c9;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 15px auto;
+      max-width: 700px;
+      font-weight: bold;
+    }
+    .calendar, input, textarea {
+      width: 90%;
+      max-width: 400px;
+      padding: 10px;
+      margin: 10px auto;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      display: block;
+    }
+    .form-box {
+      background-color: #e8f5e9;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    button {
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: var(--accent-dark);
+    }
+    .whatsapp-button {
+      background-color: #25D366;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #1b5e20;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      margin-top: 20px;
+    }
+    .slider {
+      max-width: 90%;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .slider img {
+      width: 100%;
+      border-radius: 10px;
+      animation: slide 10s infinite alternate;
+    }
+    @keyframes slide {
+      0% {transform: translateX(0);}
+      100% {transform: translateX(-10px);}
+    }
+    .toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+  <script>
+    function sendToWhatsApp(event) {
+      event.preventDefault();
+      var name = document.getElementById('name').value;
+      var age = document.getElementById('age').value;
+      var phone = document.getElementById('phone').value;
+      var email = document.getElementById('email').value;
+      var note = document.getElementById('note').value;
+
+      var message = 'હું કેમ્પ માટે રજીસ્ટર થવા માંગું છું:%0A' +
+                    'નામ: ' + name + '%0A' +
+                    'ઉંમર: ' + age + '%0A' +
+                    'મોબાઈલ: ' + phone + '%0A' +
+                    'ઈમેઇલ: ' + email + '%0A' +
+                    'નોંધ: ' + note;
+
+      var url = 'https://wa.me/7575072219?text=' + message;
+      window.open(url, '_blank');
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="logo">
+  <h1>🌿 Heart of Nature Camp Site 🌿</h1>
+  <p>ઘુમલી ભાણવડ રોડ, દેવભૂમિ દ્વારકા</p>
+</header>
+
+<div class="toggle">
+  <button onclick="toggleMode()">🌗 Mode</button>
+</div>
+
+<div class="slider section">
+  <img src="https://source.unsplash.com/800x400/?nature,camping" alt="Camp Image">
+</div>
+
+<div class="section">
+  <div class="highlight">
+    <h2>📍 જગ્યા:</h2>
+    <p>બાપુની વાવ આશ્રમ પાછળ, ઘુમલી ભાણવડ રોડ, ભાણવડ, દેવભૂમિ દ્વારકા</p>
+  </div>
+
+  <div class="highlight">
+    <h2>📅 કેમ્પ તારીખ પસંદ કરો:</h2>
+    <input type="date" class="calendar">
+  </div>
+
+  <div class="form-box">
+    <h2>📝 કેમ્પ માટે રજીસ્ટ્રેશન કરો</h2>
+    <form onsubmit="sendToWhatsApp(event)">
+      <input type="text" id="name" placeholder="તમારું નામ" required>
+      <input type="text" id="age" placeholder="ઉંમર" required>
+      <input type="tel" id="phone" placeholder="મોબાઈલ નંબર" required>
+      <input type="email" id="email" placeholder="ઈમેઇલ" required>
+      <textarea id="note" placeholder="કોઈ ખાસ નોંધો?" rows="3"></textarea>
+      <button type="submit">WhatsApp દ્વારા મોકલો</button>
+    </form>
+  </div>
+
+  <div class="highlight">
+    <h2>📞 સંપર્ક કરો:</h2>
+    <p>મો. 7575072219</p>
+    <a class="whatsapp-button"
+       href="https://wa.me/7575072219?text=હું કેમ્પ માં આવવા ઇચ્છું છું, કૃપા કરી તમે મને તેના વિશે માહિતી આપશો?"
+       target="_blank">WhatsApp દ્વારા જોડાવા</a>
+  </div>
+
+  <iframe src="https://maps.google.com/maps?q=ghumli%20bhanvad%20road&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+</div>
+
+<footer>
+  &copy; 2025 Heart of Nature Camp | All rights reserved
+</footer>
+
+</body>
+</html>
